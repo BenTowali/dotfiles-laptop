@@ -1,0 +1,68 @@
+// -*- mode: jsonc -*-
+{
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "spacing": 4, // Gaps between modules (4px)
+  "modules-left": [
+		"hyprland/workspaces"
+  ],
+  "modules-center": [
+		"clock"
+  ],
+  "modules-right": [
+		"network",
+		"tray",
+		"hyprland/language",
+		"battery"
+  ],
+	"hyprland/workspaces": {
+		"format": "{name}",
+		"on-click": "activate",
+		"sort-by-number": true,
+		"persistent-workspaces": {
+			"1": [],
+			"2": [],
+			"3": []
+		}
+	},
+	"clock": {
+    "interval": 60,
+    "format": "{:%H:%M}",
+    "max-length": 25,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"mode": "year",
+			"mode-mon-col": 3,
+			"on-scroll": 1,
+			"format": {
+				"months": "<span color='#cdd6f4'><b>{}</b></span>",
+				"days": "<span color='#cdd6f4'><b>{}</b></span>",
+				"weekdays": "<span color='#cba6f7'><b>{}</b></span>",
+				"today": "<span color='#f38ba8'><b><u>{}</u></b></span>"
+			}
+		}
+	},
+	"network": {
+    "format": "{ifname}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+	},
+	"tray": {
+		"icon-size": 21,
+		"spacing": 5
+	},
+	"hyprland/language": {
+		"format": "{short}"
+	},
+	"battery": {
+		"format": "{capacity}% {icon}",
+		"format-icons": ["", "", "", "", ""],
+		"max-length": 25
+	}
+}
+
