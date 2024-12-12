@@ -51,7 +51,7 @@ alias reddit="tuir"
 alias wget='wget --hsts-file="$XDG_DATA_HOME/wget-hsts"'
 alias lg="lazygit"
 alias ff="fastfetch"
-alias startwin="sudo virsh start win10"
+alias bttui="bluetuith"
 
 # Keybindings
 bindkey -e
