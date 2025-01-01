@@ -1,0 +1,49 @@
+#!/bin/sh
+
+get_volume() {
+	pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
+}
+
+is_muted() {
+	pactl get-sink-mute @DEFAULT_SINK@ | grep -q "yes"
+}
+
+raise_volume() {
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+}
+
+lower_volume() {
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+}
+
+mute_volume() {
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+}
+
+send_notification() {
+	dunstify -u low --icon="$HOME/.config/dunst/volume.png" "Volume: $volume%" -h string:x-dunst-stack-tag:dunstvolume -h int:value:"$volume"
+}
+
+send_notification_muted() {
+	dunstify -u low --icon="$HOME/.config/dunst/volume.png" "Sound is muted" -h string:x-dunst-stack-tag:dunstvolume
+}
+
+case $1 in
+	up)
+		raise_volume
+		;;
+	down)
+		lower_volume
+		;;
+	mute)
+		mute_volume
+		;;
+esac
+
+volume=`get_volume`
+
+if is_muted; then
+	send_notification_muted
+else
+	send_notification
+fi

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+get_brightness() {
+	brightnessctl -m -d intel_backlight | cut -d, -f4 | tr -d %
+}
+
+raise_brightness() {
+	brightnessctl s 5%+
+}
+
+lower_brightness() {
+	brightnessctl s 5%-
+}
+
+send_notification() {
+	dunstify -u low --icon="$HOME/.config/dunst/sun.png" "Brightness: $brightness%" -h string:x-dunst-stack-tag:dunstbrightness -h int:value:"$brightness"
+}
+
+case $1 in
+	up)
+		raise_brightness
+		;;
+	down)
+		lower_brightness
+		;;
+esac
+
+brightness=`get_brightness`
+send_notification

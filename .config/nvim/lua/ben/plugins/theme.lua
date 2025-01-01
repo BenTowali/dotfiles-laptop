@@ -67,8 +67,14 @@ return {
 		},
 	},
 
-	-- Colorizer
-	{ "norcalli/nvim-colorizer.lua", opts = {} },
+	-- Pretty dialogs
+	{ "stevearc/dressing.nvim", opts = {
+			input = { title_pos = "center", }
+		}
+	},
+
+	-- Gitsigns
+	{ "lewis6991/gitsigns.nvim", opts = {} },
 
 	-- Icons
 	"nvim-tree/nvim-web-devicons",
