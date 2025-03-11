@@ -40,4 +40,4 @@ export TUIR_EDITOR=nvim
 export GOPATH="$XDG_DATA_HOME"/go
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
-export PATH="$HOME/.local/bin:$PATH":"$GOPATH/bin"
+export PATH="$HOME/.local/bin:$PATH":"$GOPATH/bin":"$XDG_DATA_HOME/cargo/bin":"$XDG_CONFIG_HOME/emacs/bin"
